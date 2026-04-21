@@ -1,1092 +1,346 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FORrest Tále — Koncept názvu 2026</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOTEL Tále — Naming Concept</title>
+<meta name="description" content="Naming concept pre rebrand hotela na Táľoch — tri smery, jedno územie." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
-    --spruce: oklch(40% 0.06 140);
-    --spruce-light: oklch(48% 0.05 140);
-    --moss: oklch(52% 0.07 135);
-    --lichen: oklch(64% 0.06 138);
-    --bronze: oklch(72% 0.12 80);
-    --bronze-dim: oklch(68% 0.08 80);
-    --linen: oklch(95% 0.01 85);
-    --linen-deep: oklch(92% 0.015 85);
-    --bark: oklch(22% 0.03 140);
-    --bark-mid: oklch(35% 0.02 140);
-    --bark-soft: oklch(55% 0.015 140);
-    --parchment: oklch(97% 0.008 85);
-
-    --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 16px;
-    --space-lg: 24px;
-    --space-xl: 48px;
-    --space-2xl: 64px;
-    --space-3xl: 96px;
-    --space-4xl: 128px;
-
-    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --paper: #FAFAF7;
+    --ink: #0A0A0A;
+    --ink-2: #2A2A28;
+    --meta: #8C8A82;
+    --rule: #D9D6CE;
+    --pad-x: clamp(24px, 6vw, 120px);
+    --pad-y: clamp(48px, 7vw, 120px);
   }
-
-  html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-  }
-
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
   body {
-    font-family: 'Figtree', system-ui, sans-serif;
-    background: var(--parchment);
-    color: var(--bark);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* ── Type Scale (1.333 — perfect fourth) ── */
-  .t-caption {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--bark-soft);
-    line-height: 1.4;
-  }
-
-  .t-body {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--bark-mid);
-    max-width: 62ch;
-  }
-
-  .t-lead {
-    font-size: clamp(1.1rem, 1.5vw, 1.33rem);
-    line-height: 1.65;
-    color: var(--bark-mid);
-    max-width: 58ch;
-    font-weight: 300;
-  }
-
-  .t-heading-sm {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(1.33rem, 2vw, 1.78rem);
-    line-height: 1.2;
-    color: var(--bark);
-  }
-
-  .t-heading {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(1.78rem, 3.5vw, 2.37rem);
-    line-height: 1.15;
-    color: var(--bark);
-  }
-
-  .t-display {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(2.37rem, 6vw, 4.2rem);
-    line-height: 1.05;
-    color: var(--bark);
-  }
-
-  .t-hero {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(3.6rem, 10vw, 8rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-  }
-
-  /* ── Nav ── */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: var(--space-lg) var(--space-xl);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.5s var(--ease-out-quart);
-  }
-
-  nav.scrolled {
-    background: oklch(97% 0.008 85 / 0.9);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    padding: var(--space-md) var(--space-xl);
-  }
-
-  .nav-logo {
-    font-family: 'Young Serif', serif;
-    font-size: 1rem;
-    color: oklch(95% 0.01 85 / 0.6);
-    letter-spacing: 0.02em;
-    transition: color 0.4s;
-  }
-
-  nav.scrolled .nav-logo { color: var(--bark); }
-
-  .nav-links {
-    display: flex;
-    gap: var(--space-lg);
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: oklch(95% 0.01 85 / 0.4);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  nav.scrolled .nav-links a { color: var(--bark-soft); }
-  .nav-links a:hover { color: oklch(95% 0.01 85 / 0.9); }
-  nav.scrolled .nav-links a:hover { color: var(--bark); }
-
-  /* ── Hero ── */
-  .hero {
+  /* ── Section shell ── */
+  section.page {
     min-height: 100vh;
-    min-height: 100dvh;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    padding: var(--space-4xl) var(--space-xl) var(--space-xl);
-    background: var(--spruce);
+    padding: var(--pad-y) var(--pad-x);
+    display: flex; flex-direction: column;
     position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 120% 80% at 10% 90%, oklch(30% 0.08 140 / 0.6) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 60% at 90% 10%, oklch(25% 0.04 80 / 0.3) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .hero-main {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--space-xl);
-  }
-
-  .hero-overline {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--bronze);
-    opacity: 0;
-    animation: rise 0.8s 0.2s var(--ease-out-expo) forwards;
-  }
-
-  .hero-title {
-    color: var(--linen);
-    opacity: 0;
-    animation: rise 0.9s 0.4s var(--ease-out-expo) forwards;
-  }
-
-  .hero-title .rest {
-    color: var(--bronze);
-    font-style: italic;
-  }
-
-  .hero-subtitle {
-    font-family: 'Figtree', sans-serif;
-    font-size: clamp(1rem, 1.8vw, 1.25rem);
-    font-weight: 300;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: oklch(80% 0.02 140);
-    opacity: 0;
-    animation: rise 0.8s 0.6s var(--ease-out-expo) forwards;
-  }
-
-  .hero-footer {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    padding-top: var(--space-lg);
-    opacity: 0;
-    animation: rise 0.8s 0.9s var(--ease-out-expo) forwards;
-  }
-
-  .hero-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: oklch(60% 0.03 140 / 0.3);
-  }
-
-  .hero-meta {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: oklch(70% 0.02 140);
-    line-height: 1.6;
-  }
-
-  .scroll-cue {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-sm);
-  }
-
-  .scroll-cue span {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: oklch(60% 0.02 140 / 0.5);
-  }
-
-  .scroll-cue::after {
-    content: '';
-    width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, oklch(60% 0.03 140 / 0.4), transparent);
-    animation: pulse-line 2.5s infinite;
-  }
-
-  /* ── Section layout ── */
-  .section {
-    padding: var(--space-4xl) var(--space-xl);
-  }
-
-  .section-narrow {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .section-wide {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-bottom: var(--space-xl);
-  }
-
-  .section-label::before {
-    content: '';
-    width: 24px;
-    height: 1.5px;
-    background: var(--bronze);
-  }
-
-  .section-label span {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--bark-soft);
-  }
-
-  /* ── Intro ── */
-  .intro {
-    background: var(--parchment);
-  }
-
-  .intro-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-3xl);
-    align-items: start;
-  }
-
-  .intro-heading {
-    position: sticky;
-    top: 120px;
-  }
-
-  .intro-heading h2 { margin-bottom: var(--space-lg); }
-
-  .intro-body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
-
-  .intro-quote {
-    padding: var(--space-lg) 0;
-    margin-top: var(--space-md);
-    font-family: 'Young Serif', serif;
-    font-size: clamp(1.1rem, 1.6vw, 1.25rem);
-    line-height: 1.55;
-    color: var(--spruce);
-    font-style: italic;
-  }
-
-  .intro-quote::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--bronze);
-    margin-bottom: var(--space-lg);
-  }
-
-  /* ── Meanings ── */
-  .meanings {
-    background: var(--linen);
-  }
-
-  .meanings-header {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .meanings-header h2 { margin-bottom: var(--space-md); }
-
-  .brand-lockup {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    color: var(--bark);
-    margin-bottom: var(--space-3xl);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .brand-lockup .rest { color: var(--bronze); font-style: italic; }
-
-  .meanings-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: oklch(80% 0.02 140 / 0.3);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .meaning-card {
-    padding: var(--space-xl);
-    background: oklch(96% 0.01 85);
-  }
-
-  .meaning-num {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--bark-soft);
-    margin-bottom: var(--space-sm);
-  }
-
-  .meaning-word {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
-    color: var(--bark);
-    margin-bottom: var(--space-sm);
-  }
-
-  .meaning-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--bark-mid);
-    max-width: 40ch;
-  }
-
-  /* ── Character ── */
-  .character {
-    background: var(--parchment);
-  }
-
-  .character-header {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .character-header h2 { margin-bottom: var(--space-md); }
-
-  .character-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: oklch(80% 0.02 140 / 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .char-row {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    background: oklch(97% 0.008 85);
-  }
-
-  .char-label {
-    padding: var(--space-lg) var(--space-lg);
-    display: flex;
-    align-items: start;
-    padding-top: 28px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--bark-soft);
-    background: oklch(95% 0.012 85);
-  }
-
-  .char-value {
-    padding: var(--space-lg) var(--space-xl);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--bark-mid);
-  }
-
-  /* ── Identity ── */
-  .identity {
-    background: var(--spruce);
-    color: var(--linen);
-  }
-
-  .identity-header {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .identity-header h2 { color: var(--linen); margin-bottom: var(--space-md); }
-  .identity-header p { color: oklch(80% 0.02 140); }
-
-  .values-stack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-  }
-
-  .value-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: var(--space-xl);
-    padding-bottom: var(--space-xl);
-    border-bottom: 1px solid oklch(50% 0.03 140 / 0.3);
-  }
-
-  .value-item:last-child { border-bottom: none; }
-
-  .value-name {
-    font-family: 'Young Serif', serif;
-    font-size: 1.15rem;
-    color: var(--linen);
-  }
-
-  .value-desc {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: oklch(80% 0.02 140);
-    max-width: 55ch;
-  }
-
-  /* ── Slogan ── */
-  .slogan-section {
-    padding: var(--space-4xl) var(--space-xl);
-    background: var(--linen-deep);
-    text-align: center;
-  }
-
-  .slogan-text {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.2;
-    color: var(--bark);
-    margin-bottom: var(--space-md);
-  }
-
-  .slogan-text em {
-    color: var(--spruce);
-    font-style: italic;
-  }
-
-  .slogan-en {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--bark-soft);
-  }
-
-  /* ── Arguments ── */
-  .arguments {
-    background: var(--parchment);
-  }
-
-  .arguments-header {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .arguments-header h2 { margin-bottom: var(--space-md); }
-
-  .arg-list {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .arg-item {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: var(--space-lg);
-    padding: var(--space-xl) 0;
-    border-top: 1px solid oklch(80% 0.01 140 / 0.4);
-  }
-
-  .arg-item:last-child {
-    border-bottom: 1px solid oklch(80% 0.01 140 / 0.4);
-  }
-
-  .arg-num {
-    font-family: 'Young Serif', serif;
-    font-size: 2rem;
-    color: var(--lichen);
-    line-height: 1.2;
-  }
-
-  .arg-content h3 {
-    font-family: 'Young Serif', serif;
-    font-size: 1.25rem;
-    color: var(--bark);
-    margin-bottom: var(--space-sm);
-    line-height: 1.3;
-  }
-
-  .arg-content p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--bark-mid);
-    max-width: 60ch;
-  }
-
-  /* ── Palette ── */
-  .palette-section {
-    background: var(--linen);
-  }
-
-  .palette-header {
-    margin-bottom: var(--space-3xl);
-  }
-
-  .palette-header h2 { margin-bottom: var(--space-md); }
-
-  .palette-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-md);
-  }
-
-  .palette-chip {
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.4s var(--ease-out-quart);
-  }
-
-  .palette-chip:hover { transform: translateY(-6px); }
-
-  .palette-swatch {
-    aspect-ratio: 1;
-    border-radius: 8px 8px 0 0;
-  }
-
-  .palette-info {
-    padding: var(--space-md);
-    background: oklch(97% 0.008 85);
-  }
-
-  .palette-name {
-    font-family: 'Young Serif', serif;
-    font-size: 0.95rem;
-    color: var(--bark);
-    margin-bottom: 2px;
-  }
-
-  .palette-desc {
-    font-size: 0.78rem;
-    color: var(--bark-soft);
-    line-height: 1.4;
-  }
-
-  /* ── Summary ── */
-  .summary-section {
-    background: var(--spruce);
-    padding: var(--space-4xl) var(--space-xl);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .summary-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 100% 80% at 80% 20%, oklch(35% 0.05 80 / 0.1) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .summary-inner {
+    border-top: 1px solid var(--rule);
+  }
+  section.page:first-of-type { border-top: 0; }
+
+  .chrome {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--meta);
+    margin-bottom: clamp(40px, 6vw, 80px);
+    gap: 24px;
+  }
+  .chrome .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .foot {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--meta);
+    margin-top: auto; padding-top: clamp(40px, 6vw, 72px);
+    gap: 16px;
+  }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta); margin-bottom: 20px;
+  }
+
+  /* ── Overview ── */
+  .overview .title {
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(56px, 11vw, 168px);
+    line-height: 0.95; letter-spacing: -0.02em;
+  }
+  .overview .title em { font-style: italic; color: var(--meta); }
+  .overview .sub {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: clamp(20px, 2.5vw, 36px); line-height: 1.3; color: var(--ink-2);
+    margin-top: clamp(20px, 2vw, 32px); max-width: 900px;
+  }
+  .overview .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 4vw, 64px);
+    margin-top: clamp(56px, 8vw, 120px);
+  }
+  .option-card {
+    border-top: 1px solid var(--ink); padding-top: 20px;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .option-card .idx {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px; letter-spacing: 0.08em; color: var(--meta);
+  }
+  .option-card .name {
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(38px, 5vw, 72px); line-height: 0.95; letter-spacing: -0.02em;
+  }
+  .option-card .name .tale {
+    display: block; font-style: italic; color: var(--ink-2);
+    font-size: clamp(24px, 3.2vw, 46px); margin-top: 4px;
+  }
+  .option-card .tag {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: clamp(18px, 1.6vw, 24px); line-height: 1.3; color: var(--ink);
+  }
+
+  /* ── Detail (each name) ── */
+  .detail .grid {
+    display: grid; grid-template-columns: minmax(280px, 360px) 1fr;
+    gap: clamp(40px, 6vw, 96px);
+  }
+  .detail .side { display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px); }
+  .detail .big-name {
+    font-family: "Instrument Serif", serif;
+    font-size: clamp(64px, 9vw, 128px); line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .detail .big-name .tale {
+    display: block; font-style: italic; color: var(--ink-2);
+    font-size: clamp(40px, 5.4vw, 76px); margin-top: 4px;
+  }
+  .detail .mood {
+    border-top: 1px solid var(--ink); padding-top: 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .detail .mood .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta);
+  }
+  .detail .mood .val {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: clamp(22px, 2.4vw, 34px); line-height: 1.15; color: var(--ink);
+  }
+  .detail .main { display: flex; flex-direction: column; gap: clamp(24px, 3vw, 40px); }
+  .detail .p {
+    font-size: clamp(17px, 1.5vw, 22px); line-height: 1.6; color: var(--ink);
+    max-width: 920px;
+  }
+  .detail .p em { font-style: italic; color: var(--meta); }
+  .detail .p strong { font-weight: 600; }
+  .detail .etym, .detail .attrs {
+    border-top: 1px solid var(--rule); padding-top: 14px;
+    display: flex; flex-direction: column; gap: 6px;
     max-width: 720px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
+  }
+  .detail .etym .et-label, .detail .attrs .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta);
+  }
+  .detail .etym .et-val {
+    font-size: clamp(15px, 1.3vw, 18px); line-height: 1.55; color: var(--ink-2);
+  }
+  .detail .etym .et-val em { font-style: italic; }
+  .detail .attrs .val { font-size: clamp(16px, 1.3vw, 20px); color: var(--ink); }
+
+  /* ── Nav (sticky, discreet) ── */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(250,250,247,0.88);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px var(--pad-x);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--meta);
+    gap: 16px;
+  }
+  .nav .brand { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nav .links { display: flex; gap: clamp(10px, 2vw, 24px); }
+  .nav a { color: var(--meta); text-decoration: none; white-space: nowrap; }
+  .nav a:hover { color: var(--ink); }
+
+  /* ── Mobile ── */
+  @media (max-width: 760px) {
+    .overview .grid-3 { grid-template-columns: 1fr; }
+    .detail .grid { grid-template-columns: 1fr; }
+    .nav .links { display: none; }
+    .chrome { flex-direction: column; gap: 8px; align-items: flex-start; }
+    .foot { flex-direction: column; gap: 6px; align-items: flex-start; }
   }
 
-  .summary-brand {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: var(--linen);
-    margin-bottom: var(--space-xl);
-    line-height: 1.1;
-  }
-
-  .summary-brand .rest { color: var(--bronze); font-style: italic; }
-
-  .summary-text {
-    font-size: 1.1rem;
-    line-height: 1.75;
-    color: oklch(80% 0.02 140);
-    margin-bottom: var(--space-xl);
-    max-width: 55ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .summary-tagline {
-    font-family: 'Young Serif', serif;
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-    font-style: italic;
-    color: var(--bronze);
-    padding-top: var(--space-xl);
-    position: relative;
-  }
-
-  .summary-tagline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 48px;
-    height: 1.5px;
-    background: oklch(60% 0.04 80 / 0.4);
-  }
-
-  /* ── Footer ── */
-  footer {
-    padding: var(--space-xl);
-    text-align: center;
-    background: var(--bark);
-  }
-
-  footer p {
-    font-size: 0.78rem;
-    color: oklch(60% 0.02 140);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Animations ── */
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(28px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse-line {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s var(--ease-out-quart), transform 0.7s var(--ease-out-quart);
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .reveal-d1 { transition-delay: 0.08s; }
-  .reveal-d2 { transition-delay: 0.16s; }
-  .reveal-d3 { transition-delay: 0.24s; }
-  .reveal-d4 { transition-delay: 0.32s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { transition: opacity 0.3s; transform: none; }
-    .hero-overline, .hero-title, .hero-subtitle, .hero-footer {
-      animation-duration: 0.01ms;
-      animation-delay: 0ms;
-    }
-    .scroll-cue::after { animation: none; }
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 860px) {
-    .section { padding: var(--space-3xl) var(--space-lg); }
-    nav { padding: var(--space-md) var(--space-lg); }
-    nav.scrolled { padding: var(--space-sm) var(--space-lg); }
-    .nav-links { display: none; }
-    .hero { padding: var(--space-3xl) var(--space-lg) var(--space-lg); }
-
-    .intro-layout {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
-
-    .intro-heading {
-      position: static;
-    }
-
-    .meanings-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .char-row {
-      grid-template-columns: 1fr;
-    }
-
-    .char-label {
-      padding: var(--space-md) var(--space-lg) 0;
-    }
-
-    .char-value {
-      padding: var(--space-sm) var(--space-lg) var(--space-lg);
-    }
-
-    .value-item {
-      grid-template-columns: 1fr;
-      gap: var(--space-sm);
-    }
-
-    .palette-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .arg-item {
-      grid-template-columns: 48px 1fr;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .palette-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero-footer {
-      flex-direction: column;
-      gap: var(--space-lg);
-      align-items: start;
-    }
-
-    .scroll-cue { display: none; }
-  }
-
+  /* Print */
   @media print {
-    nav, .scroll-cue { display: none; }
-    .hero { min-height: auto; padding: var(--space-xl); }
-    .reveal { opacity: 1; transform: none; }
-    .section { padding: var(--space-xl); }
+    .nav { display: none; }
+    section.page { min-height: auto; break-inside: avoid; }
+    body { background: #fff; }
   }
 </style>
 </head>
 <body>
 
-<nav id="mainNav">
-  <div class="nav-logo">FORrest Tále</div>
-  <ul class="nav-links">
-    <li><a href="#uvod">Úvod</a></li>
-    <li><a href="#koncept">Koncept</a></li>
-    <li><a href="#identita">Identita</a></li>
-    <li><a href="#argumenty">Argumenty</a></li>
-    <li><a href="#paleta">Paleta</a></li>
-  </ul>
+<nav class="nav">
+  <span class="brand">Hotel Tále · Naming Concept</span>
+  <div class="links">
+    <a href="#overview">Prehľad</a>
+    <a href="#forrest">Forrest</a>
+    <a href="#retree">Retree</a>
+    <a href="#horizon">Horizon</a>
+  </div>
 </nav>
 
-<!-- ═══ Hero ═══ -->
-<section class="hero">
-  <div class="hero-main">
-    <p class="hero-overline">Prezentácia konceptu · 2026</p>
-    <h1 class="t-hero hero-title">FOR<span class="rest">rest</span></h1>
-    <p class="hero-subtitle">Tále</p>
+<!-- 01 · OVERVIEW -->
+<section class="page overview" id="overview">
+  <div class="chrome">
+    <span>Hotel Tále · Naming Concept</span>
+    <span class="num">01 / 04</span>
   </div>
-  <div class="hero-footer">
-    <div class="hero-meta">
-      Koncept názvu hotela<br>
-      Verzia 1
+  <div class="eyebrow">— Prehľad návrhov</div>
+  <h1 class="title">Tri smery,<br><em>jedno územie</em>.</h1>
+  <p class="sub">Každý názov stavia na inej časti DNA hotela.</p>
+  <div class="grid-3">
+    <div class="option-card">
+      <div class="idx">01</div>
+      <div class="name">Forrest<span class="tale">Tále</span></div>
+      <div class="tag">Príroda, pokoj.</div>
     </div>
-    <div class="scroll-cue">
-      <span>Scroll</span>
+    <div class="option-card">
+      <div class="idx">02</div>
+      <div class="name">Retree<span class="tale">Tále</span></div>
+      <div class="tag">Návrat a obnova.</div>
+    </div>
+    <div class="option-card">
+      <div class="idx">03</div>
+      <div class="name">Horizon<span class="tale">Tále</span></div>
+      <div class="tag">Výhľad a rozhľad.</div>
     </div>
   </div>
+  <div class="foot"><span>01 · Prehľad</span><span>Tále · Nízke Tatry</span></div>
 </section>
 
-<!-- ═══ Intro ═══ -->
-<section class="section intro" id="uvod">
-  <div class="section-wide">
-    <div class="section-label reveal"><span>Úvod</span></div>
-    <div class="intro-layout">
-      <div class="intro-heading reveal reveal-d1">
-        <h2 class="t-heading">Názov, ktorý<br>sa odhalí pri<br>druhom pohľade</h2>
+<!-- 02 · FORREST -->
+<section class="page detail" id="forrest">
+  <div class="chrome">
+    <span>Concept 01 · Forrest Tále</span>
+    <span class="num">02 / 04</span>
+  </div>
+  <div class="grid">
+    <div class="side">
+      <div>
+        <div class="eyebrow">— Koncept 01</div>
+        <div class="big-name">Forrest<span class="tale">Tále</span></div>
       </div>
-      <div class="intro-body">
-        <p class="t-lead reveal reveal-d2">Hotel v Táloch leží v srdci tatranského lesa. Okolo neho rastú smreky, ráno sa zdvíha hmla, večer nastáva ticho, aké hosť v meste dávno nezažil.</p>
-        <p class="t-body reveal reveal-d3">Úlohou názvu je tento zmyslový zážitok pomenovať — tak, aby ho potenciálny hosť pocítil ešte predtým, ako si rezerváciu potvrdí.</p>
-        <div class="intro-quote reveal reveal-d4">
-          Slovo forest v sebe skryto nesie aj frázu for rest — pre odpočinok. Prekvapenie, úsmev a zapamätateľnosť — presne to, čo robí z&nbsp;názvu značku.
-        </div>
+      <div class="mood">
+        <span class="lbl">Mood</span>
+        <span class="val">Hlboký zelený pokoj.</span>
+      </div>
+    </div>
+    <div class="main">
+      <p class="p">
+        Dvojité „R" je <em>vizuálnou pečaťou</em> — zámerne editoriálnou.
+        Odkazuje na anglické <strong>forest</strong> (les) a <strong>for rest</strong> (pre oddych),
+        no zdvojením získava charakter vlastného mena a zapamätateľnej značky.
+      </p>
+      <p class="p">
+        Zámerné zdvojenie R premení opisné slovo na vlastné meno — pôsobí staršie,
+        osobnejšie, viac boutique. Ľahšie chrániteľné, ľahšie zapamätateľné.
+        Dvojvýznam robí z názvu <em>zapamätateľnejšiu značku</em>.
+      </p>
+    </div>
+  </div>
+  <div class="foot"><span>Forrest Tále</span><span>Príroda, pokoj</span></div>
+</section>
+
+<!-- 03 · RETREE -->
+<section class="page detail" id="retree">
+  <div class="chrome">
+    <span>Concept 02 · Retree Tále</span>
+    <span class="num">03 / 04</span>
+  </div>
+  <div class="grid">
+    <div class="side">
+      <div>
+        <div class="eyebrow">— Koncept 02</div>
+        <div class="big-name">Retree<span class="tale">Tále</span></div>
+      </div>
+      <div class="mood">
+        <span class="lbl">Mood</span>
+        <span class="val">Čistý, tichý, súčasný.</span>
+      </div>
+    </div>
+    <div class="main">
+      <p class="p">
+        <strong>Retree:</strong> retreat + tree. Predpona <em>re-</em> evokuje obnovu, reset, návrat;
+        <em>tree</em> zakotvuje značku v horskej prírode. Jedno slovo, dve čítania.
+      </p>
+      <p class="p">
+        V hotelovom biznise predstavuje slovo <strong>retreat</strong> špecializovaný typ pobytu
+        zameraný na intenzívny oddych, osobný rozvoj, regeneráciu alebo vzdelávanie, ktorý spája
+        ubytovacie služby s pridanou hodnotou zážitku a transformácie.
+      </p>
+      <div class="etym">
+        <span class="et-label">re · tree</span>
+        <span class="et-val">re- (lat. znova, späť) + tree (strom). Fonetická blízkosť slovu <em>retreat</em> dáva menu druhú, skrytú vrstvu.</span>
+      </div>
+      <div class="attrs">
+        <span class="lbl">Dominantné atribúty</span>
+        <span class="val">Obnova · Súčasnosť · Aktívny oddych · Wellness · Zámerne pomalé tempo</span>
       </div>
     </div>
   </div>
+  <div class="foot"><span>Retree Tále</span><span>Návrat a obnova</span></div>
 </section>
 
-<!-- ═══ Meanings ═══ -->
-<section class="section meanings" id="koncept">
-  <div class="section-wide">
-    <div class="section-label reveal"><span>Koncept</span></div>
-    <div class="meanings-header reveal reveal-d1">
-      <h2 class="t-heading">Štyri významy v jednom slove</h2>
-      <p class="t-lead">Každý z nich otvára iné dvere a oslovuje inú časť publika — no všetky vedú do toho istého miesta.</p>
+<!-- 04 · HORIZON -->
+<section class="page detail" id="horizon">
+  <div class="chrome">
+    <span>Concept 03 · Horizon Tále</span>
+    <span class="num">04 / 04</span>
+  </div>
+  <div class="grid">
+    <div class="side">
+      <div>
+        <div class="eyebrow">— Koncept 03</div>
+        <div class="big-name">Horizon<span class="tale">Tále</span></div>
+      </div>
+      <div class="mood">
+        <span class="lbl">Mood</span>
+        <span class="val">Široký, svetlý, studený vzduch.</span>
+      </div>
     </div>
-
-    <div class="brand-lockup reveal reveal-d2">FOR<span class="rest">rest</span></div>
-
-    <div class="meanings-grid">
-      <div class="meaning-card reveal reveal-d1">
-        <div class="meaning-num">01 · Les</div>
-        <div class="meaning-word">FOREST</div>
-        <p>Symbol tatranskej prírody, ktorá hotel obklopuje. Ticho, čistota, vôňa smreka.</p>
-      </div>
-      <div class="meaning-card reveal reveal-d2">
-        <div class="meaning-num">02 · Pre odpočinok</div>
-        <div class="meaning-word">FOR REST</div>
-        <p>Priame pomenovanie toho, prečo hostia prichádzajú. Hotel vyrobený pre oddych.</p>
-      </div>
-      <div class="meaning-card reveal reveal-d3">
-        <div class="meaning-num">03 · Pre teba</div>
-        <div class="meaning-word">FOR YOU</div>
-        <p>Osobný tón. Hosť je v centre pozornosti, všetko je prispôsobené jemu.</p>
-      </div>
-      <div class="meaning-card reveal reveal-d4">
-        <div class="meaning-num">04 · Pozor!</div>
-        <div class="meaning-word">FORE!</div>
-        <p>Skryté golfové zvolanie pri odpale. Pre golfistov milý odkaz, ktorý pochopia jemne.</p>
-      </div>
+    <div class="main">
+      <p class="p">Hotel ako <em>miesto s výhľadom</em>. Názov nepopisuje budovu, popisuje to, čo budova ponúka.</p>
+      <p class="p">
+        „Horizon" je medzinárodné slovo zrozumiteľné bez prekladu. Evokuje rozhľad,
+        šírku, ambíciu — a zároveň panorámu hrebeňov Nízkych Tatier, ktorá je faktickou hviezdou lokality.
+      </p>
+      <p class="p">
+        <strong>Tále sú o rozhľade.</strong> Hotel stojí nad dolinou, s otvoreným panoramatickým výhľadom na okolitú prírodu.
+        Názov vyberá faktickú, overiteľnú prednosť — nie abstraktnú náladu.
+      </p>
+      <p class="p">
+        „Horizon" je priamo zrozumiteľné pre slovenského, českého, poľského, nemeckého aj anglicky hovoriaceho hosťa.
+        Znižuje bariéru pre zahraničný trh.
+      </p>
     </div>
   </div>
+  <div class="foot"><span>Horizon Tále</span><span>Výhľad a rozhľad</span></div>
 </section>
 
-<!-- ═══ Character ═══ -->
-<section class="section character">
-  <div class="section-wide">
-    <div class="section-label reveal"><span>Charakter značky</span></div>
-    <div class="character-header reveal reveal-d1">
-      <h2 class="t-heading">Osobnosť a&nbsp;nálada</h2>
-    </div>
-
-    <div class="character-stack reveal reveal-d2">
-      <div class="char-row">
-        <div class="char-label">Osobnosť</div>
-        <div class="char-value">Pokojná, prírodná, úprimná. Hotel, ktorý nepotrebuje pôsobiť väčším, ako je. Drevo, kameň, ticho.</div>
-      </div>
-      <div class="char-row">
-        <div class="char-label">Nálada</div>
-        <div class="char-value">Ranná hmla medzi stromami. Sauna po prechádzke. Čaj v kresle pri okne. Pocit, že sa čas spomalil.</div>
-      </div>
-      <div class="char-row">
-        <div class="char-label">Silné stránky</div>
-        <div class="char-value">Slovná hra, ktorá si predáva sama seba. Moderné, zapamätateľné, prepojené s&nbsp;globálnym wellness trendom.</div>
-      </div>
-      <div class="char-row">
-        <div class="char-label">Cieľové publikum</div>
-        <div class="char-value">Milovníci prírody a aktívneho oddychu. Turisti a cykloturisti, ktorí objavujú Nízke Tatry. Golfisti a lyžiari. Páry aj rodiny, ktoré si užívajú pohyb v&nbsp;horách.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Identity ═══ -->
-<section class="section identity" id="identita">
-  <div class="section-wide">
-    <div class="section-label reveal" style="--bronze: oklch(72% 0.12 80);"><span>Identita</span></div>
-    <div class="identity-header reveal reveal-d1">
-      <h2 class="t-heading">Za čím značka stojí</h2>
-      <p class="t-lead" style="color: oklch(80% 0.02 140);">Hodnoty, ktoré sa napĺňajú v každej izbe, jedálenskom lístku aj v úsmeve na recepcii.</p>
-    </div>
-
-    <div class="values-stack">
-      <div class="value-item reveal reveal-d1">
-        <div class="value-name">Les ako hostiteľ</div>
-        <div class="value-desc">Okolitá príroda je hlavný hrdina pobytu. Chodníky, výhľady, vôňa ihličia — všetko je súčasťou ponuky.</div>
-      </div>
-      <div class="value-item reveal reveal-d2">
-        <div class="value-name">Pokoj v každej izbe</div>
-        <div class="value-desc">Mäkké svetlo, prírodné materiály, ticho. Izba je útočisko, nie len miesto na prenocovanie.</div>
-      </div>
-      <div class="value-item reveal reveal-d3">
-        <div class="value-name">Aktivita bez tlaku</div>
-        <div class="value-desc">Golf, lyže, bike a turistika čakajú, no nikto nenaháňa. Odpočinok pri krbe má rovnakú hodnotu ako šport.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Slogan ═══ -->
-<section class="slogan-section reveal">
-  <div class="section-label" style="justify-content: center;">
-    <span class="t-caption">Hlavný slogan</span>
-  </div>
-  <div style="height: var(--space-xl);"></div>
-  <p class="slogan-text">Čistá <em>príroda.</em><br>Aktívny <em>oddych.</em></p>
-  <div style="height: var(--space-md);"></div>
-  <p class="slogan-en">Pure Nature. Active Rest.</p>
-</section>
-
-<!-- ═══ Arguments ═══ -->
-<section class="section arguments" id="argumenty">
-  <div class="section-wide">
-    <div class="section-label reveal"><span>Argumenty</span></div>
-    <div class="arguments-header reveal reveal-d1">
-      <h2 class="t-heading">Päť dôvodov, prečo<br>FORrest Tále funguje</h2>
-    </div>
-
-    <div class="arg-list">
-      <div class="arg-item reveal">
-        <div class="arg-num">01</div>
-        <div class="arg-content">
-          <h3>Štyri významy v jednom slove</h3>
-          <p>Forest, for rest, for you, fore! — každý hosť si v názve nájde svoj vlastný vstup. Málokedy sa takáto významová hustota podarí v jednom krátkom slove.</p>
-        </div>
-      </div>
-      <div class="arg-item reveal reveal-d1">
-        <div class="arg-num">02</div>
-        <div class="arg-content">
-          <h3>Efekt prekvapenia</h3>
-          <p>Pri druhom pohľade hosť pochopí slovnú hru a usmeje sa. Tento moment aha-efektu si hostia pamätajú — a radi ho vysvetľujú ďalej. Značka tak získava prirodzený ústny marketing.</p>
-        </div>
-      </div>
-      <div class="arg-item reveal reveal-d2">
-        <div class="arg-num">03</div>
-        <div class="arg-content">
-          <h3>Súlad s globálnym trendom</h3>
-          <p>Digital detox, slow travel, forest bathing, wellness — globálne trendy s dvojciferným rastom. FORrest Tále je postavený tak, aby zasiahol presne toto publikum, ktoré je najrýchlejšie sa rozširujúcim segmentom cestovného ruchu v Európe.</p>
-        </div>
-      </div>
-      <div class="arg-item reveal reveal-d3">
-        <div class="arg-num">04</div>
-        <div class="arg-content">
-          <h3>Celoročná relevantnosť</h3>
-          <p>Les žije celý rok. Jeseň je najpestrejšia, zima najtichšia, jar najvoňavejšia, leto najaktívnejšie. Názov neviaže hotel na jednu sezónu, čím rovnomerne rozkladá obsadenosť.</p>
-        </div>
-      </div>
-      <div class="arg-item reveal reveal-d4">
-        <div class="arg-num">05</div>
-        <div class="arg-content">
-          <h3>Dlhá životnosť</h3>
-          <p>Les ako symbol pokoja nie je módna vlna. Potreba odpočinku v roku 2035 bude rovnaká, ak nie väčšia, ako dnes. FORrest Tále je názov, ktorý nestarne — naopak, jeho posolstvo s časom silnie.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Palette ═══ -->
-<section class="section palette-section" id="paleta">
-  <div class="section-wide">
-    <div class="section-label reveal"><span>Vizuálna paleta</span></div>
-    <div class="palette-header reveal reveal-d1">
-      <h2 class="t-heading">Ako bude značka vyzerať</h2>
-      <p class="t-lead">Paleta inšpirovaná tatranským lesom — tmavé ihličie, machová zem, svetlé drevo, teplý bronz večerného slnka, ľan ako mlieko pri káve.</p>
-    </div>
-
-    <div class="palette-grid">
-      <div class="palette-chip reveal reveal-d1">
-        <div class="palette-swatch" style="background: oklch(40% 0.06 140);"></div>
-        <div class="palette-info">
-          <div class="palette-name">Spruce</div>
-          <div class="palette-desc">Hlavná farba. Smrek v podvečer.</div>
-        </div>
-      </div>
-      <div class="palette-chip reveal reveal-d1">
-        <div class="palette-swatch" style="background: oklch(52% 0.07 135);"></div>
-        <div class="palette-info">
-          <div class="palette-name">Moss</div>
-          <div class="palette-desc">Sekundárna. Mach po daždi.</div>
-        </div>
-      </div>
-      <div class="palette-chip reveal reveal-d2">
-        <div class="palette-swatch" style="background: oklch(64% 0.06 138);"></div>
-        <div class="palette-info">
-          <div class="palette-name">Lichen</div>
-          <div class="palette-desc">Jemná plocha. Lišajník na kameni.</div>
-        </div>
-      </div>
-      <div class="palette-chip reveal reveal-d3">
-        <div class="palette-swatch" style="background: oklch(72% 0.12 80);"></div>
-        <div class="palette-info">
-          <div class="palette-name">Bronze</div>
-          <div class="palette-desc">Akcent. Západ slnka cez ihličie.</div>
-        </div>
-      </div>
-      <div class="palette-chip reveal reveal-d4">
-        <div class="palette-swatch" style="background: oklch(95% 0.01 85);"></div>
-        <div class="palette-info">
-          <div class="palette-name">Linen</div>
-          <div class="palette-desc">Podklad. Plátno a pokoj.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Summary ═══ -->
-<section class="summary-section">
-  <div class="summary-inner reveal">
-    <div class="summary-brand">FOR<span class="rest">rest</span> Tále</div>
-    <p class="summary-text">Značka pre hostí, ktorí sa chcú zastaviť. Nie preto, že musia, ale preto, že vedia, že to potrebujú. Pracuje s motívom lesa ako prirodzeného liečiteľa, s pokojom ako hlavnou službou a s úprimnosťou ako značkovým tónom.</p>
-    <p class="summary-tagline">Tu sa o vás postará les.</p>
-  </div>
-</section>
-
-<footer>
-  <p>FORrest Tále · Koncept názvu · Prezentácia 2026 · Verzia 1</p>
-</footer>
-
-<script>
-  const nav = document.getElementById('mainNav');
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        nav.classList.toggle('scrolled', window.scrollY > 60);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-  reveals.forEach(el => observer.observe(el));
-</script>
+<template id="__bundler_thumbnail" data-bg-color="#FAFAF7">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FAFAF7"/>
+    <text x="600" y="440" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="260" fill="#0A0A0A">Tále</text>
+    <line x1="200" y1="560" x2="1000" y2="560" stroke="#0A0A0A" stroke-width="2"/>
+    <text x="600" y="620" text-anchor="middle" font-family="monospace" font-size="32" letter-spacing="8" fill="#8C8A82">NAMING CONCEPT</text>
+  </svg>
+</template>
 
 </body>
 </html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOTEL Tále — Naming Concept (Essentials)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<script>
+  window.addEventListener('load', async () => {
+    try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e){}
+    setTimeout(() => window.print(), 700);
+  });
+</script>
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --ink: #0A0A0A;
+    --ink-2: #2A2A28;
+    --meta: #8C8A82;
+    --rule: #D9D6CE;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #000; }
+
+  deck-stage > section {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .chrome {
+    position: absolute; top: 56px; left: 120px; right: 120px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px; letter-spacing: 0.06em;
+    color: var(--meta);
+  }
+  .chrome .proj { text-transform: uppercase; }
+  .chrome .num { font-variant-numeric: tabular-nums; }
+
+  .foot {
+    position: absolute; left: 120px; right: 120px; bottom: 56px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--meta);
+  }
+
+  .body { position: absolute; top: 130px; left: 120px; right: 120px; bottom: 120px; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta); margin-bottom: 28px;
+  }
+
+  /* ─── Overview ─── */
+  .overview .body { display: grid; grid-template-rows: auto 1fr; gap: 80px; }
+  .overview .title {
+    font-family: "Instrument Serif", serif;
+    font-size: 104px; line-height: 1; letter-spacing: -0.02em;
+    max-width: 1400px;
+  }
+  .overview .title em { font-style: italic; color: var(--meta); }
+  .overview .sub {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 36px; line-height: 1.3; color: var(--ink-2);
+    margin-top: 28px; max-width: 900px;
+  }
+  .overview .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px;
+    align-content: end;
+  }
+  .option-card {
+    border-top: 1px solid var(--ink); padding-top: 24px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .option-card .idx {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px; letter-spacing: 0.08em; color: var(--meta);
+  }
+  .option-card .name {
+    font-family: "Instrument Serif", serif;
+    font-size: 76px; line-height: 0.95; letter-spacing: -0.02em;
+  }
+  .option-card .name .tale {
+    display: block; font-style: italic; color: var(--ink-2);
+    font-size: 48px; margin-top: 4px;
+  }
+  .option-card .tag {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 26px; line-height: 1.3; color: var(--ink); max-width: 360px;
+  }
+
+  /* ─── Name detail slide ─── */
+  .detail .body { display: grid; grid-template-columns: 360px 1fr; gap: 96px; }
+  .detail .side { display: flex; flex-direction: column; gap: 40px; }
+  .detail .big-name {
+    font-family: "Instrument Serif", serif;
+    font-size: 120px; line-height: 0.9; letter-spacing: -0.03em;
+  }
+  .detail .big-name .tale {
+    display: block; font-style: italic; color: var(--ink-2);
+    font-size: 72px; margin-top: 4px;
+  }
+  .detail .mood {
+    border-top: 1px solid var(--ink); padding-top: 18px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .detail .mood .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta);
+  }
+  .detail .mood .val {
+    font-family: "Instrument Serif", serif; font-style: italic;
+    font-size: 34px; line-height: 1.15; color: var(--ink);
+  }
+
+  .detail .main { display: flex; flex-direction: column; gap: 44px; padding-top: 8px; }
+  .detail .p {
+    font-size: 22px; line-height: 1.55; color: var(--ink);
+    max-width: 980px;
+  }
+  .detail .p em { font-style: italic; color: var(--meta); }
+  .detail .p strong { font-weight: 600; }
+
+  .detail .etym {
+    border-top: 1px solid var(--rule); padding-top: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    max-width: 760px;
+  }
+  .detail .etym .et-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--meta);
+  }
+  .detail .etym .et-val {
+    font-size: 18px; line-height: 1.55; color: var(--ink-2);
+  }
+  .detail .etym .et-val em { font-style: italic; }
+
+  .detail .attrs {
+    display: flex; flex-direction: column; gap: 10px;
+    border-top: 1px solid var(--rule); padding-top: 16px;
+    max-width: 760px;
+  }
+  .detail .attrs .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--meta);
+  }
+  .detail .attrs .val { font-size: 20px; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ════════════════ 01 · OVERVIEW ════════════════ -->
+  <section class="overview" data-label="Prehľad">
+    <div class="chrome">
+      <span class="proj">HOTEL TÁLE · NAMING CONCEPT</span>
+      <span class="num">01 / 04</span>
+    </div>
+    <div class="body">
+      <div>
+        <div class="eyebrow">— Prehľad návrhov</div>
+        <div class="title">Tri smery,<br><em>jedno územie</em>.</div>
+        <div class="sub">Každý názov stavia na inej časti DNA hotela.</div>
+      </div>
+      <div class="grid-3">
+        <div class="option-card">
+          <div class="idx">01</div>
+          <div class="name">Forrest<span class="tale">Tále</span></div>
+          <div class="tag">Príroda, pokoj.</div>
+        </div>
+        <div class="option-card">
+          <div class="idx">02</div>
+          <div class="name">Retree<span class="tale">Tále</span></div>
+          <div class="tag">Návrat a obnova.</div>
+        </div>
+        <div class="option-card">
+          <div class="idx">03</div>
+          <div class="name">Horizon<span class="tale">Tále</span></div>
+          <div class="tag">Výhľad a rozhľad.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 · Prehľad</span><span>Tále · Nízke Tatry</span></div>
+  </section>
+
+  <!-- ════════════════ 02 · FORREST TÁLE ════════════════ -->
+  <section class="detail" data-label="Forrest Tále">
+    <div class="chrome">
+      <span class="proj">CONCEPT 01 · FORREST TÁLE</span>
+      <span class="num">02 / 04</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept 01</div>
+          <div class="big-name">Forrest<span class="tale">Tále</span></div>
+        </div>
+        <div class="mood">
+          <span class="lbl">Mood</span>
+          <span class="val">Hlboký zelený pokoj.</span>
+        </div>
+      </div>
+      <div class="main">
+        <p class="p">
+          Dvojité „R" je <em>vizuálnou pečaťou</em> — zámerne editoriálnou.
+          Odkazuje na anglické <strong>forest</strong> (les) a <strong>for rest</strong> (pre oddych),
+          no zdvojením získava charakter vlastného mena a zapamätateľnej značky.
+        </p>
+        <p class="p">
+          Zámerné zdvojenie R premení opisné slovo na vlastné meno — pôsobí staršie,
+          osobnejšie, viac boutique. Ľahšie chrániteľné, ľahšie zapamätateľné.
+          Dvojvýznam robí z názvu <em>zapamätateľnejšiu značku</em>.
+        </p>
+      </div>
+    </div>
+    <div class="foot"><span>Forrest Tále</span><span>Príroda, pokoj</span></div>
+  </section>
+
+  <!-- ════════════════ 03 · RETREE TÁLE ════════════════ -->
+  <section class="detail" data-label="Retree Tále">
+    <div class="chrome">
+      <span class="proj">CONCEPT 02 · RETREE TÁLE</span>
+      <span class="num">03 / 04</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept 02</div>
+          <div class="big-name">Retree<span class="tale">Tále</span></div>
+        </div>
+        <div class="mood">
+          <span class="lbl">Mood</span>
+          <span class="val">Čistý, tichý, súčasný.</span>
+        </div>
+      </div>
+      <div class="main">
+        <p class="p">
+          <strong>Retree:</strong> retreat + tree. Predpona <em>re-</em> evokuje obnovu, reset, návrat;
+          <em>tree</em> zakotvuje značku v horskej prírode. Jedno slovo, dve čítania.
+        </p>
+        <p class="p">
+          V hotelovom biznise predstavuje slovo <strong>retreat</strong> špecializovaný typ pobytu
+          zameraný na intenzívny oddych, osobný rozvoj, regeneráciu alebo vzdelávanie, ktorý spája
+          ubytovacie služby s pridanou hodnotou zážitku a transformácie.
+        </p>
+        <div class="etym">
+          <span class="et-label">re · tree</span>
+          <span class="et-val">re- (lat. znova, späť) + tree (strom). Fonetická blízkosť slovu <em>retreat</em> dáva menu druhú, skrytú vrstvu.</span>
+        </div>
+        <div class="attrs">
+          <span class="lbl">Dominantné atribúty</span>
+          <span class="val">Obnova · Súčasnosť · Aktívny oddych · Wellness · Zámerne pomalé tempo</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Retree Tále</span><span>Návrat a obnova</span></div>
+  </section>
+
+  <!-- ════════════════ 04 · HORIZON TÁLE ════════════════ -->
+  <section class="detail" data-label="Horizon Tále">
+    <div class="chrome">
+      <span class="proj">CONCEPT 03 · HORIZON TÁLE</span>
+      <span class="num">04 / 04</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept 03</div>
+          <div class="big-name">Horizon<span class="tale">Tále</span></div>
+        </div>
+        <div class="mood">
+          <span class="lbl">Mood</span>
+          <span class="val">Široký, svetlý, studený vzduch.</span>
+        </div>
+      </div>
+      <div class="main">
+        <p class="p">
+          Hotel ako <em>miesto s výhľadom</em>. Názov nepopisuje budovu, popisuje to,
+          čo budova ponúka.
+        </p>
+        <p class="p">
+          „Horizon" je medzinárodné slovo zrozumiteľné bez prekladu. Evokuje rozhľad,
+          šírku, ambíciu — a zároveň panorámu hrebeňov Nízkych Tatier, ktorá je
+          faktickou hviezdou lokality.
+        </p>
+        <p class="p">
+          <strong>Tále sú o rozhľade.</strong> Hotel stojí nad dolinou, s otvoreným
+          panoramatickým výhľadom na okolitú prírodu. Názov vyberá faktickú,
+          overiteľnú prednosť — nie abstraktnú náladu.
+        </p>
+        <p class="p">
+          „Horizon" je priamo zrozumiteľné pre slovenského, českého, poľského, nemeckého
+          aj anglicky hovoriaceho hosťa. Znižuje bariéru pre zahraničný trh.
+        </p>
+      </div>
+    </div>
+    <div class="foot"><span>Horizon Tále</span><span>Výhľad a rozhľad</span></div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>

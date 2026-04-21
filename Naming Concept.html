@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HOTEL Tále — Naming Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --ink: #0A0A0A;
+    --ink-2: #2A2A28;
+    --meta: #8C8A82;
+    --rule: #D9D6CE;
+    --tint: #EFEDE6;
+    --accent: #3D4A3E; /* deep forest green, low chroma — used sparingly */
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #000; }
+
+  deck-stage > section {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    letter-spacing: 0.002em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Global chrome: slide number + project tag ─────────────── */
+  .chrome {
+    position: absolute;
+    top: 56px;
+    left: 120px;
+    right: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+    font-weight: 500;
+  }
+  .chrome .proj { font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.04em; text-transform: none; font-size: 12px; }
+  .chrome .num { font-variant-numeric: tabular-nums; }
+
+  .foot {
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    bottom: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  /* ─── Body wrapper ─────────────── */
+  .body {
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    right: 120px;
+    bottom: 120px;
+  }
+
+  /* ─── Typographic primitives ─────────────── */
+  .display {
+    font-family: "Instrument Serif", "Times New Roman", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+  .ital { font-style: italic; }
+
+  .eyebrow {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin-bottom: 24px;
+  }
+  .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .rule-top { border-top: 1px solid var(--ink); }
+
+  /* ─── Cover ─────────────── */
+  .cover .body { display: grid; grid-template-rows: 1fr auto; }
+  .cover .display-xxl {
+    font-family: "Instrument Serif", serif;
+    font-size: 280px;
+    line-height: 0.86;
+    letter-spacing: -0.035em;
+    align-self: end;
+  }
+  .cover .display-xxl .sub {
+    display: block;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin-top: 40px;
+  }
+  .cover .meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    margin-top: 48px;
+  }
+  .meta-row .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+    margin-bottom: 8px;
+  }
+  .meta-row .val {
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  /* ─── Overview ─────────────── */
+  .overview .body { display: grid; grid-template-rows: auto 1fr; gap: 72px; }
+  .overview .title {
+    font-family: "Instrument Serif", serif;
+    font-size: 88px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    max-width: 1200px;
+  }
+  .overview .title em { font-style: italic; color: var(--meta); }
+  .overview .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    align-content: end;
+  }
+  .option-card {
+    border-top: 1px solid var(--ink);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .option-card .idx {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--meta);
+  }
+  .option-card .name {
+    font-family: "Instrument Serif", serif;
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .option-card .name .tale {
+    font-style: italic;
+    display: block;
+    font-size: 48px;
+    color: var(--ink-2);
+    margin-top: 4px;
+  }
+  .option-card .tag {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    max-width: 320px;
+    margin-top: auto;
+  }
+
+  /* ─── Name Intro (slide 1 of each name) ─────────────── */
+  .name-intro .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+  .name-intro .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .name-intro .big-name {
+    font-family: "Instrument Serif", serif;
+    font-size: 200px;
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+  }
+  .name-intro .big-name .tale {
+    display: block;
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 120px;
+    letter-spacing: -0.025em;
+    margin-top: 4px;
+  }
+  .name-intro .claim {
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 480px;
+    margin-top: 40px;
+  }
+  .name-intro .claim::before { content: "\201C"; color: var(--meta); margin-right: 4px; }
+  .name-intro .claim::after { content: "\201D"; color: var(--meta); margin-left: 4px; }
+  .name-intro .right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 64px;
+    border-left: 1px solid var(--rule);
+  }
+  .field { display: flex; flex-direction: column; gap: 10px; }
+  .field .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .field .val-sm { font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .field .val-lg {
+    font-family: "Instrument Serif", serif;
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .field .val-lg em { font-style: italic; color: var(--meta); }
+
+  /* ─── Etymology / Concept slide ─────────────── */
+  .concept .body { display: grid; grid-template-columns: 280px 1fr; gap: 80px; }
+  .concept .side { display: flex; flex-direction: column; gap: 32px; }
+  .concept .side .name-mini {
+    font-family: "Instrument Serif", serif;
+    font-size: 48px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .concept .side .name-mini em { font-style: italic; color: var(--meta); display: block; font-size: 32px; }
+  .concept .main { display: flex; flex-direction: column; gap: 56px; }
+  .concept h2 {
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 900px;
+  }
+  .concept h2 em { font-style: italic; color: var(--meta); }
+  .concept .reasons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .reason {
+    border-top: 1px solid var(--ink);
+    padding-top: 16px;
+  }
+  .reason .num-r {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--meta);
+    margin-bottom: 8px;
+  }
+  .reason .h {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .reason .p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 380px;
+  }
+
+  /* ─── Mood slide ─────────────── */
+  .mood .body { display: grid; grid-template-rows: auto 1fr; gap: 40px; }
+  .mood .header { display: flex; justify-content: space-between; align-items: baseline; }
+  .mood .header .h {
+    font-family: "Instrument Serif", serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .mood .header .h em { font-style: italic; color: var(--meta); }
+  .mood .header .kws {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    text-align: right;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+  .mood .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+  }
+  .mood .tile {
+    position: relative;
+    overflow: hidden;
+    background: var(--tint);
+    border-radius: 2px;
+  }
+  .mood .tile.t1 { grid-row: 1 / span 2; }
+  .mood .tile .plabel {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+    display: flex;
+    justify-content: space-between;
+  }
+  /* placeholder stripe */
+  .mood .tile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(10,10,10,0.04) 18px 19px);
+  }
+
+  /* ─── Logotype slide ─────────────── */
+  .logotype .body { display: grid; grid-template-rows: auto 1fr auto; gap: 40px; }
+  .logotype .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .logotype .header .h {
+    font-family: "Instrument Serif", serif;
+    font-size: 56px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .logotype .header .h em { font-style: italic; color: var(--meta); }
+  .logotype .header .meta-r {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .logotype .stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 0;
+  }
+  .logotype .lt-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    min-height: 340px;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .logotype .lt-cell:last-child { border-right: 0; }
+  .logotype .lt-cell.dark { background: var(--ink); color: var(--paper); }
+  .logotype .lt-cell.accent { background: var(--accent); color: var(--paper); }
+  .logotype .lt-cell .cell-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .logotype .lt-cell.dark .cell-tag,
+  .logotype .lt-cell.accent .cell-tag { color: rgba(250,250,247,0.55); }
+
+  /* Logo lockups */
+  .lockup-wordmark {
+    font-family: "Instrument Serif", serif;
+    font-size: 84px;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    text-align: center;
+  }
+  .lockup-wordmark .tale { font-style: italic; display: block; font-size: 52px; margin-top: -4px; color: var(--meta); }
+  .lockup-wordmark.on-dark .tale { color: rgba(250,250,247,0.62); }
+  .lockup-wordmark.on-accent .tale { color: rgba(250,250,247,0.7); }
+
+  .lockup-stacked {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .lockup-stacked .brand {
+    font-family: "Instrument Serif", serif;
+    font-size: 56px;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    padding-bottom: 6px;
+  }
+  .lockup-stacked .brand em { font-style: italic; color: var(--meta); }
+  .lockup-stacked .sep {
+    width: 36px; height: 1px; background: currentColor; opacity: 0.4;
+  }
+  .lockup-stacked .tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .on-dark .lockup-stacked .brand em { color: rgba(250,250,247,0.6); }
+
+  .lockup-mono {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 28px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .lockup-mono .div { display: inline-block; width: 8px; height: 8px; border: 1px solid currentColor; transform: rotate(45deg); margin: 0 12px 0 12px; vertical-align: middle; }
+
+  .logotype .notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .logotype .notes .n {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .logotype .notes .n .lbl {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .logotype .notes .n .p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+
+  /* ─── Closing comparison ─────────────── */
+  .compare .body { display: grid; grid-template-rows: auto 1fr; gap: 48px; }
+  .compare .title {
+    font-family: "Instrument Serif", serif;
+    font-size: 96px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    max-width: 1400px;
+  }
+  .compare .title em { font-style: italic; color: var(--meta); }
+  .compare .table {
+    border-top: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 200px repeat(3, 1fr);
+  }
+  .compare .row {
+    display: contents;
+  }
+  .compare .cell {
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .compare .cell.h {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .compare .cell.brand {
+    font-family: "Instrument Serif", serif;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    padding-bottom: 16px;
+  }
+  .compare .cell.brand em { font-style: italic; color: var(--meta); }
+  .compare .cell.last { border-bottom: 0; }
+
+  /* ── spec sheet detail cards on logotype slide ── */
+  .spec {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--meta);
+  }
+  .spec .sw { width: 14px; height: 14px; border: 1px solid var(--rule); display: inline-block; }
+
+  /* Cover decorative mark */
+  .mark {
+    width: 60px; height: 60px;
+    border: 1px solid var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Instrument Serif", serif;
+    font-style: italic;
+    font-size: 28px;
+  }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ════════════════ 01 · COVER ════════════════ -->
+  <section class="cover" data-label="Cover">
+    <div class="chrome">
+      <span class="proj">hoteltale.sk · naming concept</span>
+      <span class="num">01 / 14</span>
+    </div>
+    <div class="body">
+      <div>
+        <div style="display:flex;align-items:center;gap:24px;margin-bottom:48px;">
+          <span class="mark">T</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--meta);">Naming proposal · Rebrand</span>
+        </div>
+        <div class="display-xxl">
+          Tri mená,<br>
+          jedno <span class="ital">miesto</span>.
+          <span class="sub">Tále, Nízke Tatry.</span>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div><div class="label">Klient</div><div class="val">Hotel · Tále</div></div>
+        <div><div class="label">Projekt</div><div class="val">Rebrand — Naming</div></div>
+        <div><div class="label">Dátum</div><div class="val">Apríl 2026</div></div>
+        <div><div class="label">Fáza</div><div class="val">Návrh — 3 koncepty</div></div>
+      </div>
+    </div>
+    <div class="foot">
+      <span>Adults only · Mountain resort</span>
+      <span>Confidential</span>
+    </div>
+  </section>
+
+  <!-- ════════════════ 02 · OVERVIEW ════════════════ -->
+  <section class="overview" data-label="Prehľad">
+    <div class="chrome">
+      <span class="proj">hoteltale.sk · naming concept</span>
+      <span class="num">02 / 14</span>
+    </div>
+    <div class="body">
+      <div>
+        <div class="eyebrow">— Prehľad návrhov</div>
+        <div class="title">Tri smery, <em>jedno územie</em>.<br>Každý názov stavia na inej časti DNA hotela — lesu, obnove alebo výhľadu.</div>
+      </div>
+      <div class="grid-3">
+        <div class="option-card">
+          <div class="idx">01 · Lesný motív</div>
+          <div class="name">Forrest<span class="tale">Tále</span></div>
+          <div class="tag">Les ako symbol pokoja, tieňa a zakorenenia. Miesto, kde sa hosť stráca medzi stromami.</div>
+        </div>
+        <div class="option-card">
+          <div class="idx">02 · Návrat & obnova</div>
+          <div class="name">Retree<span class="tale">Tále</span></div>
+          <div class="tag">Retreat × tree. Návrat k sebe, ticho stromov, nová energia aktívneho oddychu.</div>
+        </div>
+        <div class="option-card">
+          <div class="idx">03 · Výhľad & šírka</div>
+          <div class="name">Horizon<span class="tale">Tále</span></div>
+          <div class="tag">Horizont Nízkych Tatier. Otvorený priestor, diaľka, rozhľad — šport aj kontemplácia.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 · Prehľad</span><span>Tále · Nízke Tatry</span></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       FORREST TÁLE · slides 03–06
+       ════════════════════════════════════════════════ -->
+
+  <!-- 03 · FORREST — Intro -->
+  <section class="name-intro" data-label="Forrest — intro">
+    <div class="chrome">
+      <span class="proj">concept 01 · forrest tále</span>
+      <span class="num">03 / 14</span>
+    </div>
+    <div class="body">
+      <div class="left">
+        <div>
+          <div class="eyebrow">— Koncept 01</div>
+          <div class="big-name">Forrest<span class="tale">Tále</span></div>
+        </div>
+        <div class="claim">Ukryť sa v lese, nájsť sa vo výhľade.</div>
+      </div>
+      <div class="right">
+        <div class="field">
+          <div class="lbl">Krátky pitch</div>
+          <div class="val-lg">Hotel ako <em>paseka medzi stromami</em> — tichý, tmavý smrekový les Nízkych Tatier ako hlavná metafora značky.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Jadro mena</div>
+          <div class="val-sm">Dvojité „R" — vizuálna pečať, zámerne editoriálna. Odkazuje na anglické <em>forest</em> (les), no zdvojením získava charakter vlastného mena (ako Harrison, Sherrill) — pôsobí ako priezvisko, nie ako generický opis.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Dominantné atribúty</div>
+          <div class="val-sm">Pokoj · Súkromie · Prirodzenosť · Zakorenenie · Dospelá elegancia</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Alternatívny claim</div>
+          <div class="val-sm">„A forest hotel. Na Táľoch."</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Forrest Tále · 01 / 04</span><span>Concept</span></div>
+  </section>
+
+  <!-- 04 · FORREST — Concept / Etymology -->
+  <section class="concept" data-label="Forrest — koncept">
+    <div class="chrome">
+      <span class="proj">concept 01 · forrest tále</span>
+      <span class="num">04 / 14</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept &amp; etymológia</div>
+          <div class="name-mini">Forrest<em>Tále</em></div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:16px;">
+          <strong style="color:var(--ink);">/ˈfɒrɪst/</strong><br>
+          z lat. <em>foresta</em> — „vonkajší les", územie mimo kultivovanej pôdy. V značke: svet za dverami hotela.
+        </div>
+      </div>
+      <div class="main">
+        <h2>Les nie je kulisa. Je <em>to</em>, čo hosť prišiel zažiť.</h2>
+        <div class="reasons">
+          <div class="reason">
+            <div class="num-r">01 — Miesto</div>
+            <div class="h">Táľe sú obklopené zmiešaným lesom.</div>
+            <div class="p">Smrek, jedľa, buk — dominanta krajiny, ktorá definuje vzduch, zvuk a svetlo celej oblasti. Meno túto realitu nezastiera, potvrdzuje ju.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">02 — Pocit</div>
+            <div class="h">Les je univerzálny symbol úľavy.</div>
+            <div class="p">Pre dospelého hosťa znamená les odpočinok bez nárokov: ticho, tieň, vôňa. Presne ten register, ktorý adults-only hotel hľadá.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">03 — Rozsah</div>
+            <div class="h">Vhodné pre všetky ročné obdobia.</div>
+            <div class="p">Les v zime a les v lete sú dva rôzne zážitky — meno preto funguje pre lyžiarsku sezónu, golf, turistiku aj cyklistiku rovnako dobre.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">04 — Odlíšenie</div>
+            <div class="h">„Forrest" namiesto „Forest".</div>
+            <div class="p">Zámerné zdvojenie R premení opisné slovo na vlastné meno — pôsobí staršie, osobnejšie, viac boutique. Ľahšie chrániteľné, ľahšie zapamätateľné.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Forrest Tále · 02 / 04</span><span>Koncept</span></div>
+  </section>
+
+  <!-- 05 · FORREST — Mood -->
+  <section class="mood" data-label="Forrest — mood">
+    <div class="chrome">
+      <span class="proj">concept 01 · forrest tále</span>
+      <span class="num">05 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Mood — <em>hlboký zelený pokoj</em></div>
+        <div class="kws">Smrekový les · mech &amp; kamene · ranná hmla · drevo &amp; ľan · tmavá zeleň · medená žltá · bronz · tlmené svetlo</div>
+      </div>
+      <div class="grid">
+        <div class="tile t1"><div class="plabel"><span>01 — Hero</span><span>Les v hmle · vertikála</span></div></div>
+        <div class="tile"><div class="plabel"><span>02</span><span>Interiér · drevo</span></div></div>
+        <div class="tile"><div class="plabel"><span>03</span><span>Detail · mech</span></div></div>
+        <div class="tile"><div class="plabel"><span>04</span><span>Outdoor · kupé v lese</span></div></div>
+        <div class="tile"><div class="plabel"><span>05</span><span>Textúra · kôra</span></div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Forrest Tále · 03 / 04</span><span>Vizuálne asociácie</span></div>
+  </section>
+
+  <!-- 06 · FORREST — Logotype -->
+  <section class="logotype" data-label="Forrest — logotype">
+    <div class="chrome">
+      <span class="proj">concept 01 · forrest tále</span>
+      <span class="num">06 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Logotype — <em>skica</em></div>
+        <div class="meta-r">Typografický smer · serif · kurzívny sufix</div>
+      </div>
+      <div class="stage">
+        <div class="lt-cell">
+          <div class="cell-tag">01 — Primárny wordmark</div>
+          <div class="lockup-wordmark">Forrest<span class="tale">Tále</span></div>
+        </div>
+        <div class="lt-cell dark">
+          <div class="cell-tag">02 — Stacked</div>
+          <div class="lockup-stacked">
+            <div class="brand">Forrest <em>Tále</em></div>
+            <div class="sep"></div>
+            <div class="tag">Adults only · Nízke Tatry</div>
+          </div>
+        </div>
+        <div class="lt-cell">
+          <div class="cell-tag">03 — Monogram / mono</div>
+          <div class="lockup-mono">F <span class="div"></span> T</div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="n"><span class="lbl">Typografia</span><span class="p">Instrument Serif (placeholder) — vysoký kontrast, tradičný, editoriálny. Finál: custom cut na mieru.</span></div>
+        <div class="n"><span class="lbl">Paleta</span><span class="p">Paper #FAFAF7, Ink #0A0A0A, Forest #3D4A3E (akcent — veľmi striedmo).</span></div>
+        <div class="n"><span class="lbl">Aplikácie</span><span class="p">Elegantné na papieri, čitateľné na fasáde, dobre kalibrované na digitál aj embosovanú pečať.</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>Forrest Tále · 04 / 04</span><span>Logotype</span></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       RETREE TÁLE · slides 07–10
+       ════════════════════════════════════════════════ -->
+
+  <!-- 07 · RETREE — Intro -->
+  <section class="name-intro" data-label="Retree — intro">
+    <div class="chrome">
+      <span class="proj">concept 02 · retree tále</span>
+      <span class="num">07 / 14</span>
+    </div>
+    <div class="body">
+      <div class="left">
+        <div>
+          <div class="eyebrow">— Koncept 02</div>
+          <div class="big-name">Retree<span class="tale">Tále</span></div>
+        </div>
+        <div class="claim">Vrátiť sa k stromu. Vrátiť sa k sebe.</div>
+      </div>
+      <div class="right">
+        <div class="field">
+          <div class="lbl">Krátky pitch</div>
+          <div class="val-lg">Moderný <em>retreat</em> v srdci Nízkych Tatier. Meno nesie oba významy súčasne — návrat aj strom.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Jadro mena</div>
+          <div class="val-sm">Portmanteau <strong>retreat</strong> + <strong>tree</strong>. Predpona <em>re-</em> evokuje obnovu, reset, návrat; <em>tree</em> zakotvuje značku v horskej prírode. Jedno slovo, dve čítania.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Dominantné atribúty</div>
+          <div class="val-sm">Obnova · Súčasnosť · Aktívny oddych · Wellness · Zámerne pomalé tempo</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Alternatívny claim</div>
+          <div class="val-sm">„Retreat. Reset. Retree."</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Retree Tále · 01 / 04</span><span>Concept</span></div>
+  </section>
+
+  <!-- 08 · RETREE — Concept -->
+  <section class="concept" data-label="Retree — koncept">
+    <div class="chrome">
+      <span class="proj">concept 02 · retree tále</span>
+      <span class="num">08 / 14</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept &amp; etymológia</div>
+          <div class="name-mini">Retree<em>Tále</em></div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:16px;">
+          <strong style="color:var(--ink);">re · tree</strong><br>
+          re- (lat. znova, späť) + tree (strom). Fonetická blízkosť slovu <em>retreat</em> dáva menu druhú, skrytú vrstvu.
+        </div>
+      </div>
+      <div class="main">
+        <h2>Vymyslené slovo, ktoré <em>funguje</em> ako sľub.</h2>
+        <div class="reasons">
+          <div class="reason">
+            <div class="num-r">01 — Stavba</div>
+            <div class="h">Dvojité čítanie = dvojnásobný dojem.</div>
+            <div class="p">Hosť v mene rozpozná „retreat" aj „tree" — a tým si rekonštruuje hodnotovú ponuku skôr, než ju niekto vysloví. Ekonomický spôsob, ako komunikovať pozíciu značky.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">02 — Doba</div>
+            <div class="h">Znie súčasne, nie turisticky.</div>
+            <div class="p">Formát jednoslovných, vymyslených názvov (Aesop, Airbnb, Away) signalizuje premyslený produkt. Odkláňa hotel od kategórie „horský grand hotel" smerom ku kategórii lifestyle.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">03 — Ochrana</div>
+            <div class="h">Ľahko ochrániteľné, ľahko nájditeľné.</div>
+            <div class="p">Originálne slovo má v SK aj EN prakticky čistú digitálnu stopu — doména, ochranná známka, SEO. Výrazná investičná výhoda do budúcnosti.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">04 — Rozsah</div>
+            <div class="h">Drží adults-only a aktivitu zároveň.</div>
+            <div class="p">„Retreat" evokuje pokoj, „tree" zakotvuje v prírode, „re-" dáva energiu nového začiatku. Vhodné pre lyžiarov, golfistov aj wellness hostí bez kompromisu.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Retree Tále · 02 / 04</span><span>Koncept</span></div>
+  </section>
+
+  <!-- 09 · RETREE — Mood -->
+  <section class="mood" data-label="Retree — mood">
+    <div class="chrome">
+      <span class="proj">concept 02 · retree tále</span>
+      <span class="num">09 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Mood — <em>čistý, tichý, súčasný</em></div>
+        <div class="kws">Biely kameň · svetlé drevo · ľanová posteľná bielizeň · para zo sauny · zelená vetvička · slnko cez závoj · minimalizmus</div>
+      </div>
+      <div class="grid">
+        <div class="tile t1"><div class="plabel"><span>01 — Hero</span><span>Wellness zátišie · svetlo</span></div></div>
+        <div class="tile"><div class="plabel"><span>02</span><span>Golfové pole · ráno</span></div></div>
+        <div class="tile"><div class="plabel"><span>03</span><span>Detail · ihličie</span></div></div>
+        <div class="tile"><div class="plabel"><span>04</span><span>Architektúra · línia</span></div></div>
+        <div class="tile"><div class="plabel"><span>05</span><span>Textúra · ľan</span></div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Retree Tále · 03 / 04</span><span>Vizuálne asociácie</span></div>
+  </section>
+
+  <!-- 10 · RETREE — Logotype -->
+  <section class="logotype" data-label="Retree — logotype">
+    <div class="chrome">
+      <span class="proj">concept 02 · retree tále</span>
+      <span class="num">10 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Logotype — <em>skica</em></div>
+        <div class="meta-r">Typografický smer · serif + sans kombinácia</div>
+      </div>
+      <div class="stage">
+        <div class="lt-cell">
+          <div class="cell-tag">01 — Primárny wordmark</div>
+          <div class="lockup-wordmark">Retree<span class="tale">Tále</span></div>
+        </div>
+        <div class="lt-cell dark">
+          <div class="cell-tag">02 — Stacked</div>
+          <div class="lockup-stacked">
+            <div class="brand">Retree <em>Tále</em></div>
+            <div class="sep"></div>
+            <div class="tag">Retreat · Reset · Return</div>
+          </div>
+        </div>
+        <div class="lt-cell">
+          <div class="cell-tag">03 — Monogram / mono</div>
+          <div class="lockup-mono">R <span class="div"></span> T</div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="n"><span class="lbl">Typografia</span><span class="p">Serif pre brand meno, geometrický sans pre claim a UI. Dvojica odzrkadľuje dvojité čítanie názvu.</span></div>
+        <div class="n"><span class="lbl">Paleta</span><span class="p">Paper, Ink, jemná salvia ako akcent — nižší kontrast, svetlejšia atmosféra.</span></div>
+        <div class="n"><span class="lbl">Aplikácie</span><span class="p">Wellness materiály, amenities, digitálne rozhrania — všade pôsobí moderne a neinvazívne.</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>Retree Tále · 04 / 04</span><span>Logotype</span></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════
+       HORIZON TÁLE · slides 11–14
+       ════════════════════════════════════════════════ -->
+
+  <!-- 11 · HORIZON — Intro -->
+  <section class="name-intro" data-label="Horizon — intro">
+    <div class="chrome">
+      <span class="proj">concept 03 · horizon tále</span>
+      <span class="num">11 / 14</span>
+    </div>
+    <div class="body">
+      <div class="left">
+        <div>
+          <div class="eyebrow">— Koncept 03</div>
+          <div class="big-name">Horizon<span class="tale">Tále</span></div>
+        </div>
+        <div class="claim">Vzduch, diaľka, a miesto, odkiaľ ich vidno.</div>
+      </div>
+      <div class="right">
+        <div class="field">
+          <div class="lbl">Krátky pitch</div>
+          <div class="val-lg">Hotel ako <em>miesto s výhľadom</em>. Názov nepopisuje budovu, popisuje to, čo budova ponúka.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Jadro mena</div>
+          <div class="val-sm">„Horizon" je medzinárodné slovo zrozumiteľné bez prekladu. Evokuje rozhľad, šírku, ambíciu — a zároveň panorámu hrebeňov Nízkych Tatier, ktorá je faktickou hviezdou lokality.</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Dominantné atribúty</div>
+          <div class="val-sm">Výhľad · Otvorenosť · Ambícia · Aktivita · Moderný luxus · Priestor</div>
+        </div>
+        <div class="field">
+          <div class="lbl">Alternatívny claim</div>
+          <div class="val-sm">„Slovensko zhora."</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Horizon Tále · 01 / 04</span><span>Concept</span></div>
+  </section>
+
+  <!-- 12 · HORIZON — Concept -->
+  <section class="concept" data-label="Horizon — koncept">
+    <div class="chrome">
+      <span class="proj">concept 03 · horizon tále</span>
+      <span class="num">12 / 14</span>
+    </div>
+    <div class="body">
+      <div class="side">
+        <div>
+          <div class="eyebrow">— Koncept &amp; etymológia</div>
+          <div class="name-mini">Horizon<em>Tále</em></div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:16px;">
+          <strong style="color:var(--ink);">/ˈhɒrɪzən/</strong><br>
+          z gr. <em>horízōn</em> — „ohraničujúci". Čiara, kde sa zem dotýka neba — a kde sa pohľad zastaví, len aby šiel ďalej.
+        </div>
+      </div>
+      <div class="main">
+        <h2>Najsilnejší aktív miesta je <em>výhľad</em>. Tak to aj nazvime.</h2>
+        <div class="reasons">
+          <div class="reason">
+            <div class="num-r">01 — Pravda</div>
+            <div class="h">Tále sú o rozhľade.</div>
+            <div class="p">Hotel stojí nad dolinou, s otvoreným panoramatickým výhľadom na hrebene. Názov vyberá faktickú, overiteľnú prednosť — nie abstraktnú náladu.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">02 — Univerzálnosť</div>
+            <div class="h">Slovo, ktoré neprekladáte.</div>
+            <div class="p">„Horizon" je priamo zrozumiteľné pre slovenského, českého, poľského, nemeckého aj anglicky hovoriaceho hosťa. Znižuje bariéru pre zahraničný trh.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">03 — Ambícia</div>
+            <div class="h">Priestorová metafora s dosahom.</div>
+            <div class="p">Horizont nie je len výhľad — je to hranica, za ktorou niečo je. Značke dáva priestor hovoriť o cieľoch, výkone a zážitkoch, nie iba o izbách.</div>
+          </div>
+          <div class="reason">
+            <div class="num-r">04 — Aktivita</div>
+            <div class="h">Šport, golf, lyžovanie — všetko sa deje <em>tam vonku</em>.</div>
+            <div class="p">Golfové pole, zjazdovky, turistické hrebene — všetky tieto aktivity sa dejú proti horizontu. Meno ich rámuje, nevyberá si medzi nimi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Horizon Tále · 02 / 04</span><span>Koncept</span></div>
+  </section>
+
+  <!-- 13 · HORIZON — Mood -->
+  <section class="mood" data-label="Horizon — mood">
+    <div class="chrome">
+      <span class="proj">concept 03 · horizon tále</span>
+      <span class="num">13 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Mood — <em>široký, svetlý, studený vzduch</em></div>
+        <div class="kws">Hrebene · ostré svetlo · sklo &amp; oceľ · modrá hodina · snehové polia · fairway · studená biela · strieborná</div>
+      </div>
+      <div class="grid">
+        <div class="tile t1"><div class="plabel"><span>01 — Hero</span><span>Panoráma · hrebene Tatier</span></div></div>
+        <div class="tile"><div class="plabel"><span>02</span><span>Skiing · svah</span></div></div>
+        <div class="tile"><div class="plabel"><span>03</span><span>Bicykel · chodník</span></div></div>
+        <div class="tile"><div class="plabel"><span>04</span><span>Architektúra · sklo</span></div></div>
+        <div class="tile"><div class="plabel"><span>05</span><span>Detail · kompas / mapa</span></div></div>
+      </div>
+    </div>
+    <div class="foot"><span>Horizon Tále · 03 / 04</span><span>Vizuálne asociácie</span></div>
+  </section>
+
+  <!-- 14 · HORIZON — Logotype -->
+  <section class="logotype" data-label="Horizon — logotype">
+    <div class="chrome">
+      <span class="proj">concept 03 · horizon tále</span>
+      <span class="num">14 / 14</span>
+    </div>
+    <div class="body">
+      <div class="header">
+        <div class="h">Logotype — <em>skica</em></div>
+        <div class="meta-r">Typografický smer · geometrická čiara · serif akcent</div>
+      </div>
+      <div class="stage">
+        <div class="lt-cell">
+          <div class="cell-tag">01 — Primárny wordmark</div>
+          <div class="lockup-wordmark">Horizon<span class="tale">Tále</span></div>
+        </div>
+        <div class="lt-cell dark">
+          <div class="cell-tag">02 — Stacked</div>
+          <div class="lockup-stacked">
+            <div class="brand">Horizon <em>Tále</em></div>
+            <div class="sep" style="width:80px;"></div>
+            <div class="tag">N 48° 54' · E 19° 31'</div>
+          </div>
+        </div>
+        <div class="lt-cell">
+          <div class="cell-tag">03 — Monogram / mono</div>
+          <div class="lockup-mono">H <span class="div"></span> T</div>
+        </div>
+      </div>
+      <div class="notes">
+        <div class="n"><span class="lbl">Typografia</span><span class="p">Široký serif pre „Horizon", kurzíva pre „Tále". Horizontálna čiara ako opakovaný motív v celom systéme.</span></div>
+        <div class="n"><span class="lbl">Paleta</span><span class="p">Paper, Ink, studená bridlicová modrá ako akcent (placeholder) — evokácia diaľky a vzduchu.</span></div>
+        <div class="n"><span class="lbl">Aplikácie</span><span class="p">Funguje veľkoplošne (fasáda, billboard), na mapách, značeniach trás aj v digitáli.</span></div>
+      </div>
+    </div>
+    <div class="foot"><span>Horizon Tále · 04 / 04</span><span>Logotype</span></div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>
